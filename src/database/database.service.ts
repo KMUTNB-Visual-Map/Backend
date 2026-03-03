@@ -11,11 +11,6 @@ export class DatabaseService {
     },
   });
 
-  
-
-
-
-
 
   async query(text: string, params?: any[]) {
     const result = await this.pool.query(text, params);
