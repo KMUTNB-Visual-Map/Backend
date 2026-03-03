@@ -5,9 +5,11 @@ import { DatabaseModule } from './database/database.module';
 import { EdgesModule } from './edges/edges.module';
 import { LandmarksModule } from './landmarks/landmarks.module';
 import { NodeModule } from './node/node.module';
+import { FloorModule } from './floor/floor.module';
+import { GuestUsersModule } from './guest_users/guest_users.module';
 
 @Module({
-  imports: [DatabaseModule,EdgesModule,LandmarksModule, NodeModule],
+  imports: [DatabaseModule,EdgesModule,LandmarksModule, NodeModule, FloorModule, GuestUsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
