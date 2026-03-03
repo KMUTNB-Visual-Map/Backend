@@ -17,7 +17,9 @@ import { GetPathfindingModule } from './get_pathfinding/get_pathfinding.module';
 
 @Module({
   
-  imports: [ConfigModule.forRoot(), 
+  imports: [ConfigModule.forRoot({
+      isGlobal: true,
+    }), 
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
