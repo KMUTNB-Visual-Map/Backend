@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -9,16 +10,21 @@ import { NodeModule } from './node/node.module';
 import { FloorModule } from './floor/floor.module';
 import { GuestUsersModule } from './guest_users/guest_users.module';
 import { CalibrationsModule } from './calibrations/calibrations.module';
+import { FindShortestPathModule } from './find_shortest_path/find_shortest_path.module';
+import { GraphModule } from './graph/graph.module';
+import { GetPathfindingModule } from './get_pathfinding/get_pathfinding.module';
+
 
 @Module({
   
-  imports: [TypeOrmModule.forRoot({
+  imports: [ConfigModule.forRoot(), 
+    TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'aws-1-ap-southeast-2.pooler.supabase.com',
-      port: 5432,
-      username: 'postgres.nskjeegyfgvaktuextiv',
-      password: 'xxxx',
-      database: 'postgres',
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: false,
       ssl: {
@@ -31,7 +37,11 @@ import { CalibrationsModule } from './calibrations/calibrations.module';
     NodeModule, 
     FloorModule, 
     GuestUsersModule, 
-    CalibrationsModule],
+    CalibrationsModule,
+    FindShortestPathModule,
+    GraphModule,
+    GetPathfindingModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
