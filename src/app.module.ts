@@ -7,9 +7,10 @@ import { LandmarksModule } from './landmarks/landmarks.module';
 import { NodeModule } from './node/node.module';
 import { FloorModule } from './floor/floor.module';
 import { GuestUsersModule } from './guest_users/guest_users.module';
+import { CalibrationsModule } from './calibrations/calibrations.module';
 
 @Module({
-  imports: [DatabaseModule,EdgesModule,LandmarksModule, NodeModule, FloorModule, GuestUsersModule],
+  imports: [DatabaseModule,EdgesModule,LandmarksModule, NodeModule, FloorModule, GuestUsersModule, CalibrationsModule],
   controllers: [AppController],
   providers: [AppService],
 })
